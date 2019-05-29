@@ -42,7 +42,7 @@ for (let i in maps) {
   let match = list.filter(function (one) {
     return _camelCase(one.name) === i
   })
-  if (match.length === 0 && !/Plugin|Data|Directive|Filter|Item|NOTICE|Demo|Dev|Tool|String|Number|number|format|md5|base64|cookie/.test(i)) {
+  if (match.length === 0 && !/Plugin|Data|Directive|Filter|Item|NOTICE|Demo|Login|Register|CheckPassword|Dev|Tool|String|Number|number|format|md5|base64|cookie/.test(i)) {
     others.push({
       name: toDash(i),
       importName: i,
@@ -56,7 +56,7 @@ others.push({
   importName: 'SwiperItem',
   path: maps['SwiperItem']
 })
-
+console.log(JSON.stringify(others));
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var co = require('co')
 var thunkify = require('thunkify')

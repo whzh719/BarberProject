@@ -14,23 +14,7 @@
     :placement="showPlacementValue"
     :drawer-style="{'background-color':'#35495e', width: '200px'}">
 
-      <!-- drawer content -->
-      <div slot="drawer">
-        <group title="Drawer demo(beta)" style="margin-top:20px;">
-          <cell title="Demo" link="/demo" value="演示" @click.native="drawerVisibility = false">
-          </cell>
-          <cell title="Buy me a coffee" link="project/donate" @click.native="drawerVisibility = false">
-          </cell>
-          <cell title="Github" link="http://github.com/airyland/vux" value="Star me" @click.native="drawerVisibility = false">
-          </cell>
-        </group>
-        <group title="showMode">
-          <radio v-model="showMode" :options="['push', 'overlay']" @on-change="onShowModeChange"></radio>
-        </group>
-        <group title="placement">
-          <radio v-model="showPlacement" :options="['left', 'right']" @on-change="onPlacementChange"></radio>
-        </group>
-      </div>
+    
 
       <!-- main content -->
       <view-box ref="viewBox" :body-padding-top="isShowNav ? '46px' : '0'" body-padding-bottom="55px">
@@ -47,6 +31,8 @@
           <span v-if="route.path === '/' || route.path === '/component/drawer'" slot="overwrite-left" @click="drawerVisibility = !drawerVisibility">
             <x-icon type="navicon" size="35" style="fill:#fff;position:relative;top:-8px;left:-3px;"></x-icon>
           </span>
+          
+          <a slot="right" @click="path='/component/login'" >登录</a>
         </x-header>
 
         <!-- remember to import BusPlugin in main.js if you use components: x-img and sticky -->
@@ -61,9 +47,17 @@
             <span class="demo-icon-22 vux-demo-tabbar-icon-home" slot="icon" style="position:relative;top: -2px;">&#xe637;</span>
             <span slot="label">Home</span>
           </tabbar-item>
-          <tabbar-item :link="{path:'/demo'}" :selected="isDemo" badge="9">
+          <tabbar-item :link="{path:'/component/barberlist'}" :selected="isDemo">
             <span class="demo-icon-22" slot="icon">&#xe633;</span>
-            <span slot="label"><span v-if="componentName" class="vux-demo-tabbar-component">{{componentName}}</span><span v-else>Demos</span></span>
+            <span slot="label"><span v-if="componentName" class="vux-demo-tabbar-component">{{componentName}}</span><span v-else>理发</span></span>
+          </tabbar-item>
+           <tabbar-item :link="{path:'/demo'}"  badge="9">
+            <span class="demo-icon-22" slot="icon">&#xe633;</span>
+            <span slot="label"><span v-if="componentName" class="vux-demo-tabbar-component">{{componentName}}</span><span v-else>订单</span></span>
+          </tabbar-item>
+           <tabbar-item :link="{path:'/component/login'}" >
+            <span class="demo-icon-22" slot="icon">&#xe633;</span>
+            <span slot="label"><span v-if="componentName" class="vux-demo-tabbar-component">{{componentName}}</span><span v-else>我的</span></span>
           </tabbar-item>
         </tabbar>
 
@@ -111,7 +105,9 @@ export default {
       }, 400)
     },
     onClickMore () {
-      this.showMenu = true
+      console.log('dd')
+      // this.path = 'login'
+      // this.showMenu = true
     },
     changeLocale (locale) {
       this.$i18n.set(locale)
@@ -174,12 +170,12 @@ export default {
     },
     leftOptions () {
       return {
-        showBack: this.route.path !== '/'
+        showBack: false
       }
     },
     rightOptions () {
       return {
-        showMore: true
+        showMore: false
       }
     },
     headerTransition () {
@@ -199,9 +195,12 @@ export default {
       return /tabbar/.test(this.route.path)
     },
     title () {
-      if (this.route.path === '/') return 'Home'
+      if (this.route.path === '/') return '理发师联盟'
       if (this.route.path === '/project/donate') return 'Donate'
       if (this.route.path === '/demo') return 'Demo list'
+      if (this.route.path === '/component/login') return '登录'
+      if (this.route.path === '/component/register') return '注册'
+      if (this.route.path === '/component/checkpassword') return '确认密码'
       return this.componentName ? `Demo/${this.componentName}` : 'Demo/~~'
     },
     viewTransition () {

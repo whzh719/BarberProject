@@ -141,6 +141,7 @@ export default {
       }
       let str = []
       list.forEach(one => {
+        console.log(one)
         let filename = one
         let path = `/component/${toDash(one)}`
         if (/#/.test(one)) {
@@ -159,6 +160,7 @@ path: '${path}',
 component: () => import('./demos/${filename}.vue').then(m => m.default)
 }`)
         }
+        // console.log(path)
 
       })
 
@@ -170,6 +172,7 @@ component: () => import('./demos/NotFoundComponent.vue').then(m => m.default)
 
         str = `[${str.join(',\n')}]`
         source = source.replace('const routes = []', 'const routes = ' + str)
+        console.log(source)
         return source
       }
     },

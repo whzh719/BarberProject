@@ -149,6 +149,9 @@ Vue.use(CloseDialogsPlugin, router)
 
 sync(store, router)
 
+// console.log(store)
+// console.log(router)
+
 // simple history management
 const history = window.sessionStorage
 history.clear()
@@ -167,7 +170,9 @@ document.addEventListener('touchstart', () => {
   isTouchStart = true
 })
 methods.forEach(key => {
+  console.log(router)
   let method = router[key].bind(router)
+  console.log(method)
   router[key] = function (...args) {
     isPush = true
     method.apply(null, args)
