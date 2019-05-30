@@ -154,7 +154,7 @@ export default {
     },
     selfview (val) {
       console.log('selfview' + val)
-      this.$router.push('/component/radio?id=' + val + '')
+      this.$router.push('/component/selfview?id=' + val + '')
     },
     apply (val) {
       console.log('apply' + val)

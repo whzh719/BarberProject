@@ -32,7 +32,7 @@
             <x-icon type="navicon" size="35" style="fill:#fff;position:relative;top:-8px;left:-3px;"></x-icon>
           </span>
           
-          <a slot="right" @click="path='/component/login'" >登录</a>
+          <a slot="right"  v-on:click="login('/component/login')" >登录</a>
         </x-header>
 
         <!-- remember to import BusPlugin in main.js if you use components: x-img and sticky -->
@@ -47,16 +47,16 @@
             <span class="demo-icon-22 vux-demo-tabbar-icon-home" slot="icon" style="position:relative;top: -2px;">&#xe637;</span>
             <span slot="label">Home</span>
           </tabbar-item>
-          <tabbar-item :link="{path:'/component/barberlist'}" :selected="isDemo">
-            <span class="demo-icon-22" slot="icon">&#xe633;</span>
+          <tabbar-item :link="{path:'/component/barber-list'}" :selected="isDemo">
+            <span class="demo-icon-22" slot="icon">&#xe634;</span>
             <span slot="label"><span v-if="componentName" class="vux-demo-tabbar-component">{{componentName}}</span><span v-else>理发</span></span>
           </tabbar-item>
            <tabbar-item :link="{path:'/demo'}"  badge="9">
             <span class="demo-icon-22" slot="icon">&#xe633;</span>
             <span slot="label"><span v-if="componentName" class="vux-demo-tabbar-component">{{componentName}}</span><span v-else>订单</span></span>
           </tabbar-item>
-           <tabbar-item :link="{path:'/component/login'}" >
-            <span class="demo-icon-22" slot="icon">&#xe633;</span>
+           <tabbar-item :link="{path:'/component/myinfo'}" >
+            <span class="demo-icon-22" slot="icon">&#xe632;</span>
             <span slot="label"><span v-if="componentName" class="vux-demo-tabbar-component">{{componentName}}</span><span v-else>我的</span></span>
           </tabbar-item>
         </tabbar>
@@ -69,6 +69,7 @@
 <script>
 import { Radio, Group, Cell, Badge, Drawer, Actionsheet, ButtonTab, ButtonTabItem, ViewBox, XHeader, Tabbar, TabbarItem, Loading, TransferDom } from 'vux'
 import { mapState, mapActions } from 'vuex'
+import { go, getUrl } from './libs/router'
 
 export default {
   directives: {
@@ -90,6 +91,9 @@ export default {
     Actionsheet
   },
   methods: {
+    login (url) {
+      this.$router.push(url)
+    },
     onShowModeChange (val) {
       /** hide drawer before changing showMode **/
       this.drawerVisibility = false
