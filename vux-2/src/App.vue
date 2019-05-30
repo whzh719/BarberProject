@@ -32,7 +32,7 @@
             <x-icon type="navicon" size="35" style="fill:#fff;position:relative;top:-8px;left:-3px;"></x-icon>
           </span>
           
-          <a slot="right"  v-on:click="login('/component/login')" >登录</a>
+          <a slot="right"  v-on:click="login('/component/login')" style="color:#ffffff" >登录</a>
         </x-header>
 
         <!-- remember to import BusPlugin in main.js if you use components: x-img and sticky -->

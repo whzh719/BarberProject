@@ -1,6 +1,10 @@
 <template>
-    <div>myinfo
-        <div></div>
+    <div >
+        <div class="weui-media-box weui-media-box_appmsg" style=" text-align: center;">
+          <div class="weui-media-box__hd" style="margin:0 auto; ">
+            <img class="weui-media-box__thumb" :src="infoModel.phone" >
+          </div>
+        </div>
         <div>
             <group>
                 <cell is-link title="人个信息" link="/component/tabbar-simple"></cell>
@@ -15,6 +19,10 @@
 </template>
 <script>
 import { Tabbar, TabbarItem, Group, Cell } from 'vux'
+const infoModel = {
+  id: '1',
+  phone: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3985098578,2279412978&fm=27&gp=0.jpg'
+}
 
 export default {
   name: 'myinfo',
@@ -23,7 +31,19 @@ export default {
     TabbarItem,
     Group,
     Cell
+  },
+  data () {
+    return {
+      infoModel: infoModel
+    }
   }
 }
 </script>
 
+<style scoped lang="less">
+@import '~vux/src/styles/1px.less';
+@import '~vux/src/styles/weui/widget/weui_cell/weui_cell_global';
+@import '~vux/src/styles/weui/widget/weui_cell/weui_access';
+@import '~vux/src/styles/weui/widget/weui_panel/weui_panel';
+@import '~vux/src/styles/weui/widget/weui_media_box/weui_media_box';
+</style>

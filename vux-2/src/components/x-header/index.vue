@@ -89,7 +89,8 @@ export default {
   position: relative;
   padding: 3px 0;
   box-sizing: border-box;
-  background-color: @header-background-color;
+  background-color: #FF9900;
+  //background-color: @header-background-color;
 }
 .vux-header .vux-header-title {
   line-height: 40px;

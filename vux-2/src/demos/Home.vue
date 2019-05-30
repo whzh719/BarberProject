@@ -169,7 +169,7 @@ body {
   text-align: center;
   color: #fff;
   height: 50px;
-  background-color: #f76a24;;
+  background-color: #FF9900;;;
   border-radius: 0px;
   background-clip: padding-box;
   font-weight: bold;
